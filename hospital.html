@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark px-4">
+    <span class="navbar-brand">Hospital Panel</span>
+</nav>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">Hospital Dashboard</h2>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th><i class="fa-solid fa-users"></i> Disease</th>
+                <th>Organ</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="tableData">
+            <!-- Data will be loaded here -->
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+async function loadData() {
+    const res = await fetch("http://localhost:5000/api/application");
+    const data = await res.json();
+
+    let html = "";
+    data.forEach(d => {
+        html += `<tr>
+            <td>${d.name}</td>
+            <td>${d.disease}</td>
+            <td>${d.organs ? d.organs.join(', ') : ''}</td>
+            <td>${d.status}</td>
+            <td>
+                <button class="btn btn-success btn-sm" onclick="updateStatus('${d._id}', 'Approved')">Fit</button>
+                <button class="btn btn-danger btn-sm" onclick="updateStatus('${d._id}', 'Rejected')">Unfit</button>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("tableData").innerHTML = html;
+}
+
+async function updateStatus(id, status) {
+    await fetch(`http://localhost:5000/api/application/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ status })
+    });
+    alert(`Application ${status}`);
+    loadData(); // Reload data
+}
+
+loadData();
+</script>
+
+</body>
+</html>

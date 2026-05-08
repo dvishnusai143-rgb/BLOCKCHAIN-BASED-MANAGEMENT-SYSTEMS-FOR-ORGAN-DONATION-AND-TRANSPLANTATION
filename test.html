@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page - Organ Donation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .status {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Organ Donation System - Test Page</h1>
+        <div class="status">
+            <h2>✅ System Status: WORKING</h2>
+            <p>Frontend and Backend are running successfully!</p>
+        </div>
+        
+        <div class="buttons">
+            <a href="index.html" class="btn">🏠 Go to Home</a>
+            <a href="login.html" class="btn">👤 Login</a>
+            <a href="register.html" class="btn">📝 Register</a>
+            <a href="admin.html" class="btn">👨‍💼 Admin</a>
+            <a href="hospital.html" class="btn">🏥 Hospital</a>
+            <a href="dashboard.html" class="btn">📊 Dashboard</a>
+            <a href="feedback.html" class="btn">⭐ Feedback</a>
+        </div>
+        
+        <div class="status">
+            <h3>🔧 Server Information</h3>
+            <p><strong>Frontend:</strong> http://localhost:5500</p>
+            <p><strong>Backend:</strong> http://localhost:5000</p>
+            <p><strong>Database:</strong> MongoDB Connected</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Test page loaded successfully!');
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
